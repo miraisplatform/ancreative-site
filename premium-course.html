@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事業家・独立開業指導コース ─ AN! creative works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;1,500&family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --serif:"Playfair Display",serif;
+    --min:"Shippori Mincho",serif;
+    --sans:"Zen Kaku Gothic New",sans-serif;
+    --INK:#15110D; --ORANGE:#DB4925; --CREAM:#F6F1E7; --LINE:#e7e2d8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--min);background:#FFFFFF;color:var(--INK);-webkit-font-smoothing:antialiased;}
+  .app{max-width:460px;margin:0 auto;position:relative;overflow-x:hidden;background:#FFFFFF;}
+
+  /* ===== RESPONSIVE (tablet / desktop) ===== */
+  @media (min-width:700px){
+    .app{max-width:820px;}
+    .hero{padding:90px 60px 64px;}
+    .hero h1{font-size:50px;}
+    .hero .lead{font-size:15px;max-width:520px;margin-left:auto;margin-right:auto;}
+    section{padding:60px 60px;}
+    .sec-h{font-size:32px;max-width:560px;}
+    .sec-p{max-width:600px;}
+    .phase{padding:32px 40px;}
+    .phase h3{font-size:21px;max-width:520px;}
+    .final{padding:76px 60px 86px;}
+    .final h2{font-size:34px;}
+    .final p{max-width:520px;margin-left:auto;margin-right:auto;}
+  }
+  @media (min-width:1000px){
+    .app{max-width:920px;}
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;color:inherit;background:none;border:none;}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--LINE);}
+  .back{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;gap:6px;color:var(--ORANGE);}
+  .back .arr{font-family:var(--serif);font-size:16px;}
+  .mark{font-family:var(--serif);font-weight:700;font-size:12px;color:var(--INK);letter-spacing:.05em;}
+
+  /* HERO */
+  .hero{padding:64px 24px 50px;position:relative;overflow:hidden;text-align:center;}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 0%,rgba(219,73,37,.08),transparent 60%);}
+  .hero .badges{display:flex;justify-content:center;gap:8px;margin-bottom:22px;position:relative;z-index:1;}
+  .hero .pbadge{font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:.1em;
+    border:1px solid var(--ORANGE);color:var(--ORANGE);padding:5px 12px;border-radius:2px;}
+  .hero .ek{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.15em;color:var(--ORANGE);
+    margin-bottom:14px;position:relative;z-index:1;}
+  .hero h1{font-family:var(--serif);font-weight:800;font-size:38px;line-height:1.18;color:var(--INK);position:relative;z-index:1;}
+  .hero h1 .it{font-style:italic;font-weight:500;color:var(--ORANGE);}
+  .hero .lead{font-family:var(--min);font-size:14px;line-height:2;margin-top:22px;color:#5a5248;position:relative;z-index:1;}
+  .hero .line{width:46px;height:1px;background:var(--ORANGE);margin:26px auto 0;position:relative;z-index:1;}
+
+  /* STATS STRIP */
+  .stats{display:flex;border-top:1px solid var(--LINE);border-bottom:1px solid var(--LINE);background:var(--CREAM);}
+  .stats .s{flex:1;text-align:center;padding:26px 6px;border-right:1px solid var(--LINE);}
+  .stats .s:last-child{border-right:none;}
+  .stats .s .v{font-family:var(--serif);font-weight:800;font-size:30px;color:var(--ORANGE);line-height:1;}
+  .stats .s .v small{font-size:14px;}
+  .stats .s .l{font-family:var(--sans);font-size:10px;color:#7a7163;margin-top:6px;letter-spacing:.03em;}
+
+  /* SECTION GENERIC */
+  section{padding:48px 24px;border-bottom:1px solid var(--LINE);}
+  .ey{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.12em;color:var(--ORANGE);margin-bottom:14px;}
+  .sec-h{font-family:var(--serif);font-weight:800;font-size:26px;line-height:1.2;color:var(--INK);margin-bottom:18px;}
+  .sec-p{font-family:var(--min);font-size:14px;line-height:2;color:#5a5248;}
+
+  /* SELECTION NOTE */
+  .selection{background:var(--CREAM);border:1.5px solid var(--ORANGE);border-radius:6px;padding:20px;margin-top:8px;}
+  .selection .t{font-family:var(--sans);font-weight:700;font-size:12px;color:var(--ORANGE);margin-bottom:8px;letter-spacing:.04em;}
+  .selection p{font-family:var(--sans);font-size:11.5px;line-height:1.95;color:#5a5248;}
+
+  /* SUPPORT AREA */
+  .areas{list-style:none;margin:4px 0 22px;border-top:1px solid var(--LINE);}
+  .areas li{font-family:var(--min);font-size:14px;line-height:1.8;color:#3d372e;padding:12px 0 12px 20px;position:relative;border-bottom:1px solid var(--LINE);}
+  .areas li::before{content:"";position:absolute;left:2px;top:21px;width:6px;height:6px;border-radius:50%;background:var(--ORANGE);}
+
+  /* CLASS CARDS (3 phases) */
+  .phase{background:var(--CREAM);border:1px solid var(--LINE);border-radius:8px;padding:26px 22px;margin-bottom:18px;position:relative;}
+  .phase .pn{font-family:var(--serif);font-weight:800;font-size:30px;color:var(--ORANGE);letter-spacing:.02em;margin-bottom:16px;}
+  .phase .pn .num{font-size:30px;margin-right:4px;}
+  .phase h3{font-family:var(--min);font-weight:800;font-size:18px;color:var(--INK);margin-bottom:12px;line-height:1.4;}
+  .phase .desc{font-family:var(--min);font-size:13.5px;line-height:1.95;color:#5a5248;margin-bottom:16px;}
+  .phase .glabel{font-family:var(--sans);font-weight:700;font-size:10px;color:var(--ORANGE);letter-spacing:.06em;margin-bottom:8px;}
+  .phase ul{list-style:none;margin-bottom:16px;}
+  .phase ul li{font-family:var(--min);font-size:13px;line-height:1.85;padding-left:18px;position:relative;margin-bottom:6px;color:#3d372e;}
+  .phase ul li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--ORANGE);}
+  .phase .step{border-left:2px solid #ddd6c7;padding-left:14px;margin-bottom:14px;}
+  .phase .step .st-h{font-family:var(--min);font-weight:800;font-size:13.5px;color:var(--INK);margin-bottom:4px;}
+  .phase .step .st-h .stno{font-family:var(--sans);font-weight:700;font-size:10px;color:var(--ORANGE);margin-right:6px;}
+  .phase .step p{font-family:var(--min);font-size:12.5px;line-height:1.85;color:#5a5248;}
+  .phase .note{font-family:var(--sans);font-size:10.5px;color:#8a8071;line-height:1.8;margin-top:8px;}
+  .phase table.ov{width:100%;border-collapse:collapse;margin-top:8px;}
+  .phase table.ov tr{border-top:1px solid var(--LINE);}
+  .phase table.ov tr:first-child{border-top:none;}
+  .phase table.ov th{font-family:var(--sans);font-weight:700;font-size:10.5px;color:var(--ORANGE);text-align:left;
+    padding:9px 8px 9px 0;white-space:nowrap;vertical-align:top;width:70px;}
+  .phase table.ov td{font-family:var(--min);font-size:12.5px;line-height:1.7;padding:9px 0;color:#3d372e;}
+  .phase .pricetag{display:inline-block;font-family:var(--sans);font-weight:700;font-size:11px;color:#fff;
+    background:var(--ORANGE);padding:5px 12px;border-radius:3px;margin-top:14px;}
+
+  /* TARGET PROFILE */
+  .profile{margin-top:8px;}
+  .profile .row{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--LINE);align-items:flex-start;}
+  .profile .row:first-child{border-top:1px solid var(--LINE);}
+  .profile .chk{flex:0 0 auto;font-family:var(--serif);color:var(--ORANGE);font-size:14px;}
+  .profile .tx{font-family:var(--min);font-size:13px;line-height:1.8;color:#3d372e;}
+
+  /* FINAL CTA */
+  .final{padding:60px 24px 70px;text-align:center;background:var(--CREAM);}
+  .final .ey{justify-content:center;display:flex;}
+  .final h2{font-family:var(--serif);font-weight:800;font-size:28px;color:var(--INK);margin-bottom:14px;}
+  .final p{font-family:var(--min);font-size:13.5px;line-height:1.95;color:#5a5248;margin-bottom:28px;}
+  .final .pill{display:inline-block;font-family:var(--sans);font-weight:700;font-size:14px;color:#fff;
+    background:var(--ORANGE);padding:17px 30px;border-radius:30px;}
+  .final .sub-note{font-family:var(--sans);font-size:10.5px;color:#8a8071;margin-top:18px;line-height:1.8;}
+
+  .totop{position:fixed;right:14px;bottom:16px;width:46px;height:46px;border-radius:50%;background:#fff;
+    border:1.4px solid var(--ORANGE);box-shadow:0 0 14px rgba(219,73,37,.25);display:flex;align-items:center;
+    justify-content:center;font-family:var(--serif);z-index:55;color:var(--ORANGE);}
+
+  /* ===== SCROLL REVEAL ===== */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.9,.32,1),transform .7s cubic-bezier(.22,.9,.32,1);}
+  .rv.rv-in{opacity:1;transform:translateY(0);}
+  .rv-stagger.rv-in{transition-delay:calc(var(--rvi,0) * 90ms);}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none!important;}}
+
+  /* ===== HOVER / TAP ===== */
+  a,button{transition:transform .25s cubic-bezier(.22,.9,.32,1),box-shadow .25s ease;}
+  .final .pill:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 24px rgba(219,73,37,.32);}
+  .final .pill:active{transform:scale(.97);}
+  .phase{transition:transform .3s cubic-bezier(.22,.9,.32,1),box-shadow .3s ease;}
+  .phase:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(21,17,13,.08);}
+  .selection{transition:transform .3s ease,box-shadow .3s ease;}
+  .selection:hover{box-shadow:0 10px 22px rgba(219,73,37,.1);}
+  .back:hover{transform:translateX(-3px);}
+  .totop{transition:transform .25s cubic-bezier(.22,.9,.32,1);}
+  .totop:hover{transform:translateY(-3px) scale(1.06);}
+  .totop:active{transform:scale(.92);}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <a class="back" href="AN-creative-courses.html"><span class="arr">←</span> コース一覧</a>
+    <div class="mark">AN! creative works</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badges"><span class="pbadge">PREMIUM CLASS</span><span class="pbadge">招待制選考</span></div>
+    <div class="ek">COURSE 04</div>
+    <h1>事業家・独立<br><span class="it">開業指導</span>コース</h1>
+    <p class="lead">80社以上の設立に関わった専門家が、<br>直接あなたの構想や意志に向かい合い、<br>設定目標まで責任を持って伴走します。<br>そのため、誰にでも開かれた場所ではありません。</p>
+    <div class="line"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="s"><div class="v"><span class="cnt" data-count="80">0</span><small>社+</small></div><div class="l">設立実績</div></div>
+    <div class="s"><div class="v"><span class="cnt" data-count="20">0</span><small>年</small></div><div class="l">指導歴</div></div>
+    <div class="s"><div class="v"><span class="cnt" data-count="3">0</span><small>回</small></div><div class="l">面談選考</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <section>
+    <div class="ey">─ ABOUT THIS COURSE</div>
+    <div class="sec-h">なぜ、選考が<br>必要なのか。</div>
+    <p class="sec-p">このコースを担当するのは、80社以上の設立に関わってきた外部講師です。一般的な講座とは異なり、決まった人数に対して、深く、個別に向き合う形で指導が行われます。だからこそ、本気で事業に向き合う方に、限られた時間とリソースを使いたいと考えています。受講には、面談3回による選考があります。</p>
+    <div class="selection">
+      <div class="t">選考プロセス</div>
+      <p>事前面談を3回実施し、現在の状況・本気度・相性を確認させていただきます。選考は「ふるい落とす」ためではなく、「本当に向き合うべき相手か」を双方で見極めるための時間です。</p>
+    </div>
+  </section>
+
+  <!-- SUPPORT AREA -->
+  <section>
+    <div class="ey">─ SUPPORT AREA</div>
+    <ul class="areas">
+      <li>起業（会社等）だけでなく、芸術、美術、または美容師、パティシエ、IT関連等の技術職での独立</li>
+      <li>自分の得意なことを活かしたフリーランス</li>
+      <li>イベントの主催者、団体の立ち上げ</li>
+      <li>スクールや各種教室の運営など</li>
+    </ul>
+    <p class="sec-p">個人または小規模で始めたい人に対して、それぞれの段階に応じて指導、サポート、後方支援などを行います。</p>
+  </section>
+
+  <!-- PHASE 1: 起業の種クラス -->
+  <section>
+    <div class="ey">─ PHASE 01</div>
+    <div class="phase">
+      <div class="pn">// Class F</div>
+      <h3>アイデアがまだない方へ。<br>型を知り、自分の種を見つける。</h3>
+      <p class="desc">独立・起業に興味はあるけれど、何から始めればいいかわからない方のためのクラスです。アイデアは何もないところから降ってくるものではなく、いくつかの型・カテゴリを知ることで見つけ方が変わります。起業の代表的なパターンを学んだうえで、自分自身の興味・経験・違和感を掘り下げ、自分だけのアイデアとして言語化していきます。</p>
+
+      <div class="glabel">到達ゴール</div>
+      <ul>
+        <li>起業の代表的なパターン・カテゴリを理解する</li>
+        <li>自分の興味・経験から、起業アイデアの種を見つけられるようになる</li>
+        <li>アイデアを、人に説明できる形に言語化できるようになる</li>
+        <li>次の実働クラスに進むための土台ができる</li>
+      </ul>
+
+      <div class="glabel">カリキュラム</div>
+      <div class="step"><div class="st-h"><span class="stno">STEP1</span>起業の型を知る</div><p>起業の代表的なパターン・カテゴリを、実例を通して学びます。</p></div>
+      <div class="step"><div class="st-h"><span class="stno">STEP2</span>自分の興味・経験を掘り下げる</div><p>好きなこと、経験、違和感を整理し、アイデアの種を見つけます。</p></div>
+      <div class="step"><div class="st-h"><span class="stno">STEP3</span>アイデアを言語化する</div><p>見つけた種を、講師のフィードバックを受けながら言葉・形に落とし込みます。</p></div>
+      <p class="note">※3ヶ月を通して3ステップを進めます。</p>
+
+      <div class="glabel" style="margin-top:6px;">対象者・条件</div>
+      <ul>
+        <li>18歳以上（できるだけ若い年齢を推奨）</li>
+        <li>アイデアがぼんやりとしている、または何も思いついていない方</li>
+        <li>事前面談（3回）での選考を通過した方</li>
+      </ul>
+
+      <div class="glabel">概要</div>
+      <table class="ov">
+        <tr><th>期間</th><td>3ヶ月</td></tr>
+        <tr><th>回数</th><td>週1回・月4回／1回120分</td></tr>
+        <tr><th>形式</th><td>対面のみ</td></tr>
+      </table>
+      <span class="pricetag">月30,000円（＋税）</span>
+    </div>
+  </section>
+
+  <!-- PHASE 2: 起業の実働クラス -->
+  <section>
+    <div class="ey">─ PHASE 02</div>
+    <div class="phase">
+      <div class="pn">// Class S</div>
+      <h3>アイデアが固まった方へ。<br>事業を、実際に動かす。</h3>
+      <p class="desc">起業の種クラスなどでアイデアが固まった方が、実際に動き出すためのクラスです。事業計画の立て方、お金の流れの設計、最初のお客さんをどう見つけるかという集客・営業まで、実務に直結する内容を、手を動かしながら学んでいきます。進むスピードは人によって異なり、3ヶ月で一区切りつく方もいれば、もう少し時間をかける方もいます。</p>
+
+      <div class="glabel">到達ゴール</div>
+      <ul>
+        <li>自分の事業の計画を、具体的な形に組み立てられるようになる</li>
+        <li>事業に必要なお金の流れを把握し、管理できるようになる</li>
+        <li>最初のお客さんに向けた営業・集客が自分でできるようになる</li>
+        <li>実際に事業を動かし始める段階に立てる</li>
+      </ul>
+
+      <div class="glabel">カリキュラム</div>
+      <div class="step"><div class="st-h"><span class="stno">1ヶ月目</span>事業計画の設計</div><p>誰に、何を、どう提供するのかを明確にし、具体的な事業計画として組み立てます。</p></div>
+      <div class="step"><div class="st-h"><span class="stno">2ヶ月目</span>お金の流れ・財務の基礎</div><p>必要な資金、収支の見通しなど財務の基礎を学び、自分の事業に当てはめます。</p></div>
+      <div class="step"><div class="st-h"><span class="stno">3ヶ月目</span>集客・営業の実践</div><p>最初のお客さんをどう見つけるか、実際の営業・集客の方法を学び実践します。</p></div>
+      <p class="note">※進捗に応じて、3ヶ月以降も継続して受講いただけます。</p>
+
+      <div class="glabel" style="margin-top:6px;">対象者・条件</div>
+      <ul>
+        <li>18歳以上（できるだけ若い年齢を推奨）</li>
+        <li>起業のアイデアがすでに固まっている方</li>
+        <li>事前面談（3回）での選考を通過した方</li>
+      </ul>
+
+      <div class="glabel">概要</div>
+      <table class="ov">
+        <tr><th>期間</th><td>最低3ヶ月（進捗により継続あり）</td></tr>
+        <tr><th>回数</th><td>週1回・月4回／1回120分</td></tr>
+        <tr><th>形式</th><td>対面のみ</td></tr>
+      </table>
+      <span class="pricetag">月50,000円（＋税）</span>
+    </div>
+  </section>
+
+  <!-- PHASE 3: 独立クラス -->
+  <section>
+    <div class="ey">─ PHASE 03</div>
+    <div class="phase">
+      <div class="pn">// Class X</div>
+      <h3>すでに事業を持つ方へ。<br>継続的な経営の相談相手。</h3>
+      <p class="desc">自分のビジネスをすでに動かしている方を対象とした、月額制のコンサルティングクラスです。決まったカリキュラムに沿って進む授業ではなく、その時々の事業の課題や状況に合わせて、内容を組み立てていきます。経営判断に迷ったとき、一人で抱え込まずに相談できる相手として、継続的に事業に向き合います。</p>
+
+      <div class="glabel">到達ゴール</div>
+      <ul>
+        <li>経営上の判断に、一人で悩まず相談しながら進められるようになる</li>
+        <li>事業の課題を継続的に整理し、改善していけるようになる</li>
+        <li>自分の事業を、より安定的に成長させていけるようになる</li>
+      </ul>
+
+      <div class="glabel">カリキュラム</div>
+      <p class="desc" style="margin-bottom:6px;">カリキュラムは固定せず、受講者の事業状況に応じて個別に設計します。一般的には、事業の現状確認・課題の整理・打ち手の検討・実行支援というサイクルを、継続的に繰り返していく形になります。</p>
+
+      <div class="glabel" style="margin-top:10px;">対象者・条件</div>
+      <ul>
+        <li>18歳以上（できるだけ若い年齢を推奨）</li>
+        <li>すでに自分のビジネスを運営している、または運営を始めている方</li>
+        <li>経営上の相談相手を継続的に持ちたい方</li>
+        <li>事前面談（3回）での選考を通過した方</li>
+      </ul>
+
+      <div class="glabel">概要</div>
+      <table class="ov">
+        <tr><th>期間</th><td>個別の契約による（人により異なる）</td></tr>
+        <tr><th>回数</th><td>週1回まで対応可能</td></tr>
+        <tr><th>形式</th><td>対面のみ</td></tr>
+      </table>
+      <span class="pricetag">条件により変動</span>
+      <p class="note">※価格はコンサルの深度や事業規模に応じて変動します。事業内容により応相談。</p>
+    </div>
+  </section>
+
+  <!-- TARGET PROFILE (誰向けか まとめ) -->
+  <section>
+    <div class="ey">─ WHO IS THIS FOR</div>
+    <div class="sec-h">こんな方に<br>向いています。</div>
+    <div class="profile">
+      <div class="row"><span class="chk">✓</span><span class="tx">本気で独立・起業を考えている、18歳以上の方</span></div>
+      <div class="row"><span class="chk">✓</span><span class="tx">アイデアの有無を問わず、本気度を重視したい方</span></div>
+      <div class="row"><span class="chk">✓</span><span class="tx">経験豊富な専門家から、継続的に向き合ってもらいたい方</span></div>
+      <div class="row"><span class="chk">✓</span><span class="tx">選考プロセスを含め、本気の場として臨める方</span></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final">
+    <div class="ey">─ APPLY</div>
+    <h2>まずは面談から、<br>始まります。</h2>
+    <p>このコースへの参加は、まず事前面談（3回）から始まります。<br>あなたの現在地と、これから向き合う事業について、<br>じっくりお話しさせてください。</p>
+    <a class="pill" href="mailto:info@ancreative.jp">面談を申し込む →</a>
+    <p class="sub-note">※面談は選考を兼ねています。内容によりご参加いただけない場合があります。</p>
+  </div>
+
+</div>
+
+<a class="totop" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
+
+<script>
+  (function(){
+    const groupSelectors = ['.stats .s', '.selection', '.areas li', '.phase', '.profile .row', '.final h2, .final p, .final .pill'];
+    const targets = new Set();
+    groupSelectors.forEach(sel=>{
+      document.querySelectorAll(sel).forEach(el=>targets.add(el));
+    });
+    let i = 0;
+    targets.forEach(el=>{
+      el.classList.add('rv','rv-stagger');
+      el.style.setProperty('--rvi', (i % 3));
+      i++;
+    });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('rv-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  })();
+
+  (function(){
+    function animateCount(el){
+      const target = parseFloat(el.dataset.count);
+      const duration = 1200;
+      const start = performance.now();
+      function step(now){
+        const p = Math.min((now-start)/duration, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(target * eased);
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }
+    const counters = document.querySelectorAll('.cnt');
+    const cio = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.4});
+    counters.forEach(el=>cio.observe(el));
+  })();
+</script>
+
+</body>
+</html>

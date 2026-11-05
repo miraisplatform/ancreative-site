@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AN! creative works ─ コース・クラス案内</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;1,500&family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --serif:"Playfair Display",serif;
+    --min:"Shippori Mincho",serif;
+    --sans:"Zen Kaku Gothic New",sans-serif;
+    --O:#DB4925; --INK:#15110D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--min);background:#fff;color:var(--INK);-webkit-font-smoothing:antialiased;}
+  .app{max-width:460px;margin:0 auto;position:relative;overflow-x:hidden;background:#F6F1E7;}
+
+  /* ===== RESPONSIVE (tablet / desktop) ===== */
+  @media (min-width:700px){
+    .app{max-width:760px;box-shadow:0 0 60px rgba(0,0,0,.06);}
+    .top{padding:80px 60px 50px;}
+    .top h1{font-size:58px;}
+    .top .lead{font-size:16px;max-width:560px;}
+    .jump{padding:26px 60px 34px;}
+    .course-head{padding:32px 60px;}
+    .course-head .ti{font-size:30px;}
+    .course-intro{padding:0 60px 26px;font-size:15px;}
+    .cls-head{padding:22px 60px;}
+    .cls-head .nm{font-size:18px;}
+    .cls-in{padding:0 60px 30px;max-width:640px;}
+    .cta-bottom{padding:64px 60px 76px;}
+    .pcard{padding:32px 60px 30px;}
+  }
+  @media (min-width:1000px){
+    .app{max-width:860px;}
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;color:inherit;background:none;border:none;}
+
+  /* ===== セクションテーマ ===== */
+  .page{padding:0 0 80px;}
+  .top{padding:60px 24px 36px;background:#fff;position:relative;}
+  .accent{color:var(--O);}
+  .cloud{border-radius:62% 38% 58% 42% / 58% 56% 44% 42%;}
+
+  /* ===== HEADER ===== */
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid #e7e2d8;}
+  .logo-cloud{width:64px;height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:700;font-size:11px;line-height:1.05;text-align:center;color:#15110D;background:#fff;}
+  .back{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;gap:6px;color:var(--INK);}
+  .back .arr{font-family:var(--serif);font-size:16px;}
+
+  /* ===== TOP ===== */
+  .top .ey{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.06em;color:var(--O);margin-bottom:10px;}
+  .top h1{font-family:var(--serif);font-weight:800;font-size:42px;line-height:1.04;}
+  .top h1 .it{font-style:italic;font-weight:500;}
+  .top .lead{font-family:var(--min);font-size:14.5px;line-height:1.95;margin-top:18px;opacity:.85;}
+  .top .note{font-family:var(--sans);font-size:11px;line-height:1.9;margin-top:18px;opacity:.6;}
+
+  /* ===== JUMP NAV ===== */
+  .jump{display:flex;flex-wrap:wrap;gap:8px;padding:20px 24px 28px;background:#fff;border-bottom:1px solid #e7e2d8;}
+  .jump a{font-family:var(--sans);font-weight:700;font-size:11.5px;border:1.3px solid var(--INK);border-radius:20px;padding:8px 14px;white-space:nowrap;}
+
+  /* ===== BIG COURSE BLOCK ===== */
+  .course{border-bottom:8px solid #ECE9E2;}
+  .course-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:26px 24px;text-align:left;cursor:pointer;background:#fff;}
+  .course-head .no{font-family:var(--sans);font-weight:700;font-size:11px;color:var(--O);letter-spacing:.06em;margin-bottom:6px;display:block;}
+  .course-head .ti{font-family:var(--serif);font-weight:800;font-size:25px;line-height:1.18;}
+  .course-head .sub{font-family:var(--sans);font-size:11px;opacity:.55;margin-top:8px;line-height:1.7;}
+  .course-head .plus{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1.4px solid var(--INK);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;transition:transform .25s ease;}
+  .course.open .course-head .plus{transform:rotate(45deg);background:var(--INK);color:#fff;}
+  .course-body{max-height:0;overflow:hidden;transition:max-height .35s ease;background:#FAF7F1;}
+  .course.open .course-body{max-height:6000px;}
+  .course-intro{font-family:var(--min);font-size:13.5px;line-height:1.95;padding:0 24px 22px;opacity:.85;}
+
+  /* ===== CLASS ACCORDION (inner) ===== */
+  .cls{border-top:1px solid #e3ddd0;}
+  .cls-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:18px 24px;text-align:left;cursor:pointer;}
+  .cls-head .nm{font-family:var(--min);font-weight:800;font-size:16.5px;line-height:1.4;}
+  .cls-head .tag{display:inline-block;font-family:var(--sans);font-weight:700;font-size:10px;background:var(--O);color:#fff;
+    padding:3px 9px;border-radius:3px;margin-bottom:8px;}
+  .cls-head .car{flex:0 0 auto;font-family:var(--serif);font-size:18px;color:var(--O);transition:transform .25s ease;}
+  .cls.open .cls-head .car{transform:rotate(90deg);}
+  .cls-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .cls.open .cls-body{max-height:3000px;}
+  .cls-in{padding:0 24px 26px;}
+
+  .blk{margin-bottom:20px;}
+  .blk .trial-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:700;font-size:13px;
+    color:#fff;background:var(--O);padding:13px 20px;border-radius:30px;margin-top:4px;}
+  .blk .trial-link:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(219,73,37,.3);}
+  .blk h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.05em;color:var(--O);margin-bottom:8px;}
+  .blk p{font-family:var(--min);font-size:13.5px;line-height:1.95;opacity:.88;}
+  .blk ul{list-style:none;}
+  .blk ul li{font-family:var(--min);font-size:13.5px;line-height:1.85;padding-left:18px;position:relative;margin-bottom:6px;opacity:.88;}
+  .blk ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--O);}
+
+  .step{border-left:2px solid #e3ddd0;padding-left:16px;margin-bottom:16px;position:relative;}
+  .step::before{content:"";position:absolute;left:-5px;top:2px;width:8px;height:8px;border-radius:50%;background:var(--O);}
+  .step .st-h{font-family:var(--min);font-weight:800;font-size:14px;margin-bottom:6px;}
+  .step .st-h .stno{font-family:var(--sans);font-weight:700;font-size:10.5px;color:var(--O);margin-right:6px;}
+  .step p{font-family:var(--min);font-size:13px;line-height:1.85;opacity:.85;}
+  .step-note{font-family:var(--sans);font-size:11px;opacity:.55;line-height:1.8;margin-top:4px;}
+
+  .month{border-left:2px solid #e3ddd0;padding-left:16px;margin-bottom:16px;position:relative;}
+  .month::before{content:"";position:absolute;left:-5px;top:2px;width:8px;height:8px;border-radius:50%;background:var(--INK);}
+  .month .mo-h{font-family:var(--min);font-weight:800;font-size:14px;margin-bottom:6px;}
+  .month p{font-family:var(--min);font-size:13px;line-height:1.85;opacity:.85;}
+
+  table.ov{width:100%;border-collapse:collapse;margin-top:4px;}
+  table.ov tr{border-top:1px solid #e3ddd0;}
+  table.ov tr:first-child{border-top:none;}
+  table.ov th{font-family:var(--sans);font-weight:700;font-size:11px;color:var(--O);text-align:left;
+    padding:10px 8px 10px 0;white-space:nowrap;vertical-align:top;width:78px;}
+  table.ov td{font-family:var(--min);font-size:13px;line-height:1.7;padding:10px 0;}
+
+  .price-note{font-family:var(--sans);font-size:10.5px;opacity:.5;margin-top:10px;line-height:1.8;}
+
+  /* ===== PREMIUM LINK CARD (外部ページへの誘導) ===== */
+  .pcard{margin:0;display:block;background:#fff;position:relative;overflow:hidden;
+    padding:32px 24px 30px;border-bottom:1px solid #e3ddd0;border:1.5px solid #DB4925;border-radius:8px;}
+  .pcard .badge-row{display:flex;gap:6px;margin-bottom:12px;position:relative;z-index:1;}
+  .pcard .pbadge{font-family:var(--sans);font-weight:700;font-size:9.5px;letter-spacing:.08em;
+    border:1px solid #DB4925;color:#DB4925;padding:4px 9px;border-radius:2px;}
+  .pcard .no{font-family:var(--sans);font-weight:700;font-size:11px;color:#DB4925;letter-spacing:.06em;display:block;margin-bottom:6px;position:relative;z-index:1;}
+  .pcard .ti{font-family:var(--serif);font-weight:800;font-size:25px;line-height:1.18;color:#15110D;position:relative;z-index:1;}
+  .pcard .sub{font-family:var(--sans);font-size:11px;color:#5a5248;opacity:.9;margin-top:8px;line-height:1.7;position:relative;z-index:1;}
+  .pcard .stat-row{display:flex;margin:20px 0 18px;border:1px solid #e3ddd0;border-radius:4px;overflow:hidden;position:relative;z-index:1;background:#fff;}
+  .pcard .stat{flex:1;text-align:center;padding:14px 6px;border-right:1px solid #e3ddd0;}
+  .pcard .stat:last-child{border-right:none;}
+  .pcard .stat .v{font-family:var(--serif);font-weight:800;font-size:22px;color:#DB4925;}
+  .pcard .stat .l{font-family:var(--sans);font-size:9.5px;color:#8a8071;margin-top:2px;}
+  .pcard .ribbon{color:#DB4925;font-family:var(--sans);font-weight:700;font-size:11px;
+    letter-spacing:.08em;margin-bottom:10px;display:block;}
+  .pcard .go{display:flex;align-items:center;justify-content:space-between;border:1.4px solid #DB4925;
+    border-radius:30px;padding:14px 20px;margin-top:6px;position:relative;z-index:1;}
+  .pcard .go span.t{font-family:var(--sans);font-weight:700;font-size:13px;color:#DB4925;}
+  .pcard .go span.a{font-family:var(--serif);font-size:18px;color:#DB4925;}
+
+  .cta-bottom{padding:50px 24px 60px;text-align:center;background:var(--O);}
+  .cta-bottom .big{font-family:var(--serif);font-weight:800;font-size:34px;color:#fff;margin-bottom:8px;}
+  .cta-bottom .jp{font-family:var(--min);font-weight:800;font-size:16px;color:#fff;margin-bottom:24px;}
+  .cta-bottom .pill{font-family:var(--sans);font-weight:700;font-size:15px;background:var(--INK);color:#fff;
+    padding:18px 28px;border-radius:50px;display:inline-block;}
+
+  .totop{position:fixed;right:14px;bottom:16px;width:46px;height:46px;border-radius:50%;background:#fff;border:1.5px solid var(--INK);
+    box-shadow:0 0 14px rgba(219,73,37,.35);display:flex;align-items:center;justify-content:center;font-family:var(--serif);z-index:55;color:#15110D;}
+
+  /* ===== SCROLL REVEAL ===== */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.9,.32,1),transform .7s cubic-bezier(.22,.9,.32,1);}
+  .rv.rv-in{opacity:1;transform:translateY(0);}
+  .rv-stagger.rv-in{transition-delay:calc(var(--rvi,0) * 80ms);}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none!important;}}
+
+  /* ===== HOVER / TAP ===== */
+  a,button{transition:transform .25s cubic-bezier(.22,.9,.32,1),box-shadow .25s ease;}
+  .course-head{transition:background .25s ease;cursor:pointer;}
+  .cls-head{transition:background .25s ease;cursor:pointer;}
+  .pcard{transition:transform .3s cubic-bezier(.22,.9,.32,1),box-shadow .3s ease;}
+  .pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(219,73,37,.18);}
+  .cta-bottom .pill:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 24px rgba(0,0,0,.25);}
+  .cta-bottom .pill:active{transform:scale(.97);}
+  .totop{transition:transform .25s cubic-bezier(.22,.9,.32,1);}
+  .totop:hover{transform:translateY(-3px) scale(1.06);}
+  .totop:active{transform:scale(.92);}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <a class="back" href="index.html"><span class="arr">←</span> TOP</a>
+    <div class="logo-cloud checker cloud">AN!<br>creative</div>
+  </header>
+
+  <!-- TOP -->
+  <div class="top">
+    <div class="ey">─ COURSES &amp; CLASSES</div>
+    <h1>コース・<br><span class="it">クラス</span>案内</h1>
+    <p class="lead">就活も、コミュニケーションも、独立も。<br>「普通の型にハマらない」あなたに合わせて、<br>進め方そのものから一緒に組み立てます。</p>
+  </div>
+
+  <!-- JUMP NAV -->
+  <div class="jump">
+    <a href="#c1">就活コース</a>
+    <a href="#c2">コミュニケーション</a>
+    <a href="#c3">ホンネ会議</a>
+    <a href="#c5">AIエージェント育成</a>
+    <a href="premium-course.html" style="background:#DB4925;color:#fff;border-color:#DB4925;">★ 事業家・独立</a>
+  </div>
+
+  <!-- ============ COURSE 1: 就活コース ============ -->
+  <div class="course" id="c1">
+    <button class="course-head" onclick="toggleCourse(this)">
+      <div>
+        <span class="no">COURSE 01</span>
+        <div class="ti">就活コース</div>
+        <div class="sub">自己分析から面接対策までを実践形式で。スタンダード／エンタメ業界特化の2クラス。</div>
+      </div>
+      <span class="plus">+</span>
+    </button>
+    <div class="course-body">
+      <p class="course-intro">就職活動を控えた大学生を対象に、自己分析から面接対策までを実践形式で学ぶコースです。一般的な就活に対応する「スタンダード就活クラス」と、エンタメ業界に特化した「エンタメ就活クラス」の2クラスがあります。</p>
+
+      <!-- CLASS: スタンダード就活クラス -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">就活</span><div class="nm">スタンダード就活クラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>就活で一番怖いのは、「このまま進めて大丈夫なのか、わからないまま進むこと」かもしれません。何をいつまでにやればいいかを最初に見える形にしてから、自己分析、企業選びの軸の作り方、エントリーシートの書き方、面接での話し方まで、一つずつ一緒に進めていきます。「行きたい会社が決まっていない」という、就活を始めたばかりの段階で大丈夫です。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>自分の強み・価値観を、自分の言葉で説明できるようになる</li>
+              <li>「なんとなく」ではなく、自分なりの企業選びの軸を持てるようになる</li>
+              <li>説得力のあるエントリーシートを自分で書けるようになる</li>
+              <li>面接で、自分の考えを落ち着いて伝えられるようになる</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>自己分析・棚卸し</div><p>これまでの経験を振り返り、自分の強み・興味・価値観を言葉にしていきます。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>企業選び・書類対策</div><p>業界・企業の選び方を学び、自分の経験を企業に伝わる文章に落とし込む練習をします。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP3</span>面接対策</div><p>模擬面接を通して、話し方・伝え方を繰り返し練習します。</p></div>
+            <p class="step-note">※3ヶ月コースでは3ステップを通して進みます。単発2回コースでは課題に合わせてステップを選んで受講可能です。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>大学3〜4年生</li>
+              <li>就職活動を始めたばかりで、進め方に不安がある方</li>
+              <li>「行きたい会社がわからない」という方</li>
+              <li>まず少人数で試してみたい方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>大学3〜4年生／就活初心者</td></tr>
+              <tr><th>期間</th><td>単発2回 ／ 3ヶ月継続（選択可）</td></tr>
+              <tr><th>回数</th><td>週1回・月4回／1回90分</td></tr>
+              <tr><th>料金</th><td>単発2回セット：10,000円（＋税）<br>3ヶ月コース：月15,000円（＋税）</td></tr>
+              <tr><th>形式</th><td>対面のみ（今後オンライン展開を検討中）</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CLASS: エンタメ就活クラス -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">就活</span><div class="nm">エンタメ就活クラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>音楽、芸能、IP、映画、テレビ──憧れの強い業界ほど、情報の差がそのまま結果に直結します。大学1〜2年生という早い段階から、業界ごとの選考の流れを知り、コツコツ準備を進めることが後の差になります。「好き」という気持ちを、企業に伝わる形・評価される形に変えていく方法を、一緒に組み立てていきます。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>エンタメ業界特有の選考の仕組み・特徴を理解する</li>
+              <li>「好き」という気持ちを、説得力のある志望理由に変換できる</li>
+              <li>業界研究の進め方が自分でできるようになる</li>
+              <li>早期から準備を進める習慣と土台ができる</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>業界研究・情報収集</div><p>音楽・芸能・IP・映画・テレビなど、各業界の構造や採用の特徴を知ります。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>自己分析・志望動機の言語化</div><p>「好き」という気持ちの中身を分解し、企業に伝わる志望動機として組み立てます。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP3</span>選考対策・準備計画づくり</div><p>業界特有の選考スタイルを踏まえ、本選考前までの準備計画を立てます。</p></div>
+            <p class="step-note">※3ヶ月コースでは3ステップを通して進みます。単発2回コースでは課題に合わせてステップを選んで受講可能です。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>大学1〜2年生</li>
+              <li>音楽・芸能・IP・映画・テレビなど、エンタメ業界を目指している方</li>
+              <li>早い段階から就活対策を始めたい方</li>
+              <li>「好きなだけでは難しい」と感じている方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>大学1〜2年生／エンタメ業界志望</td></tr>
+              <tr><th>期間</th><td>単発2回 ／ 3ヶ月継続（選択可）</td></tr>
+              <tr><th>回数</th><td>週1回・月4回／1回90分</td></tr>
+              <tr><th>料金</th><td>単発2回セット：10,000円（＋税）<br>3ヶ月コース：月15,000円（＋税）</td></tr>
+              <tr><th>形式</th><td>対面のみ（今後オンライン展開を検討中）</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ COURSE 2: コミュニケーションコース ============ -->
+  <div class="course" id="c2">
+    <button class="course-head" onclick="toggleCourse(this)">
+      <div>
+        <span class="no">COURSE 02</span>
+        <div class="ti">コミュニケーション<br>コース</div>
+        <div class="sub">話すこと自体が苦手な方向けクラスと、社会人向けビジネスコミュニケーションクラス。</div>
+      </div>
+      <span class="plus">+</span>
+    </button>
+    <div class="course-body">
+      <p class="course-intro">コミュニケーションに課題を感じる方のためのコースです。人と話すこと自体に苦手意識がある方向けの「ハナスチカラクラス」と、社会人として伝える力を高めたい方向けの「ビジネスコミュニケーションクラス」の2クラスがあります。</p>
+
+      <!-- CLASS: ハナスチカラクラス -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">学生向け</span><div class="nm">ハナスチカラクラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>人と話すこと自体が苦手、雑談がうまくできない、自分の気持ちをうまく伝えられない──そんな悩みに向き合うクラスです。コミュニケーションが苦手なのは性格の問題ではなく「慣れ」の問題であることが多くあります。最初は台本を使って話すところから始め、演劇や声優のトレーニングで使われるアプローチを少しずつ取り入れながら、人と話すことへの抵抗を段階的に外していきます。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>台本がなくても、自分の言葉で人と話せるようになる</li>
+              <li>友達との雑談に、抵抗を感じにくくなる</li>
+              <li>自分の気持ちや考えを、相手に伝えられるようになる</li>
+              <li>人と話すことへの自信がついてくる</li>
+              <li>就活の場面でも使えるコミュニケーションの基礎が身につく</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>台本を使って話す練習</div><p>決まった台本・型を使い、声を出し人と話す感覚に慣れていきます。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>自分の言葉で伝える練習</div><p>台本に頼らず、自分の気持ちや考えを自分の言葉で表現する練習に移ります。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP3</span>就活コミュニケーション総まとめ</div><p>面接やグループディスカッションなど、就活で必要なスキルを集中して練習します。</p></div>
+            <p class="step-note">※3ヶ月コースでは3ステップを通して進みます。単発2回コースでは課題に合わせてステップを選んで受講可能です。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>10代〜20代の方</li>
+              <li>人と話すこと自体が苦手、または嫌だと感じている方</li>
+              <li>自分の気持ちを相手に伝えるのが難しいと感じている方</li>
+              <li>「普通に話せる前提」のしんどさを感じてきた方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>10代〜20代／コミュニケーションが苦手な方</td></tr>
+              <tr><th>期間</th><td>単発2回 ／ 3ヶ月継続（選択可）</td></tr>
+              <tr><th>回数</th><td>週1回・月4回／1回90分</td></tr>
+              <tr><th>料金</th><td>単発2回セット：10,000円（＋税）<br>3ヶ月コース：月15,000円（＋税）</td></tr>
+              <tr><th>形式</th><td>対面のみ</td></tr>
+            </table>
+          </div>
+          <div class="blk">
+            <a class="trial-link" href="hanasu-chikara-taikenkai.html">まずは体験会に参加する →</a>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CLASS: ビジネスコミュニケーションクラス -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">社会人向け</span><div class="nm">ビジネスコミュニケーションクラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>最低限の会話はできるけれど、社内でのプレゼンや報連相、チーム内のやりとりになると、もう一歩うまく伝えられない──そんな社会人の方のためのクラスです。「話せる」と「伝わる」の間にあるギャップを埋めていくことを目的に、実務で使える伝え方・聞き方・関係構築のスキルを学びます。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>社内プレゼンで、要点を整理して伝えられるようになる</li>
+              <li>相手や場面に応じて、伝え方を調整できるようになる</li>
+              <li>チーム内でのコミュニケーションが円滑になる</li>
+              <li>自分の意見を、相手に配慮しながらしっかり伝えられるようになる</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>伝え方の基礎を整理する</div><p>結論から話す、要点を絞るなど、ビジネスコミュニケーションの基本的な型を学びます。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>プレゼンテーション実践</div><p>実際に資料や話す内容を組み立て、フィードバックを受けながら練習します。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP3</span>チーム内コミュニケーション実践</div><p>報連相、意見の伝え方など、職場で必要なやりとりをロールプレイで練習します。</p></div>
+            <p class="step-note">※3ヶ月コースでは3ステップを通して進みます。単発2回コースでは課題に合わせてステップを選んで受講可能です。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>社会人の方（30代前半まで）</li>
+              <li>社内プレゼンや報告がうまくいかないと感じている方</li>
+              <li>チーム内のコミュニケーションを円滑にしたい方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>社会人（30代前半まで）</td></tr>
+              <tr><th>期間</th><td>単発2回 ／ 3ヶ月継続（選択可）</td></tr>
+              <tr><th>回数</th><td>週1回・月4回／1回90分</td></tr>
+              <tr><th>料金</th><td>単発2回セット：10,000円（＋税）<br>3ヶ月コース：月20,000円（＋税）</td></tr>
+              <tr><th>形式</th><td>対面のみ</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ COURSE 3: ホンネ会議 ============ -->
+  <div class="course" id="c3">
+    <button class="course-head" onclick="toggleCourse(this)">
+      <div>
+        <span class="no">COURSE 03</span>
+        <div class="ti">ホンネ会議</div>
+        <div class="sub">「働きたくない」気持ちを否定せず受け止める、対話とワークのクラス。</div>
+      </div>
+      <span class="plus">+</span>
+    </button>
+    <div class="course-body">
+
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">働きたくない</span><div class="nm">ホンネ会議</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>「働きたくない」という気持ちを、まずは否定せずに受け止めるところから始まるクラスです。働くこと自体への不安、やりたいことが見つからない焦り、過去の失敗からくる自信のなさ──理由は人によって違います。毎週の対話とワークを通して、本音を言葉にし、小さな行動を試しながら、自分にとっての「次の一歩」を一緒に見つけていきます。教えることよりも、引き出すことを大切にするクラスです。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>「働きたくない」気持ちの背景にある本音を、自分の言葉で表現できるようになる</li>
+              <li>小さな行動・経験を通して、自分に向いていそうな方向性が見えてくる</li>
+              <li>次に進むべき場所（他コースへの編入、就職・進路など）が見つかる</li>
+              <li>何もしていない状態から、何かに向かって動き出す感覚を持てるようになる</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>ホンネを出す</div><p>「働きたくない」の中身を、誰にも否定されない場で言葉にしていきます。回数がかかっても問題ありません。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>小さく試す</div><p>言葉にした本音をもとに、小さな行動やワークに挑戦します。失敗してもまったく問題ない、試すための場です。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP3</span>次の一歩を選ぶ</div><p>向いていそうな方向性を一緒に整理し、就活コースや独立コースなど次に進む場所を検討します。状況により人材紹介・派遣のご紹介も行います。</p></div>
+            <p class="step-note">※3ヶ月コースでは3ステップを通して進みます。単発2回コースでは、まずSTEP1から体験いただけます。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>10代〜20代の方</li>
+              <li>働くことに気が乗らない、または怖さを感じている方</li>
+              <li>ニート・フリーターの状態にあり、現状を変えたいと考えている方</li>
+              <li>過去の失敗（就活・離職・対人関係など）で動けなくなっている方</li>
+              <li>休学・留年・長い空白期間があり、その理由を説明するのが負担だと感じている方</li>
+              <li>「普通に動ける前提」の支援が、自分には合わないと感じてきた方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>10代〜20代／働くことに気が乗らない方など</td></tr>
+              <tr><th>期間</th><td>単発2回 ／ 3ヶ月継続（選択可）</td></tr>
+              <tr><th>回数</th><td>週1回・月4回／1回90分</td></tr>
+              <tr><th>料金</th><td>単発2回セット：10,000円（＋税）<br>3ヶ月コース：月15,000円（＋税）</td></tr>
+              <tr><th>形式</th><td>対面のみ</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ COURSE 4: AIエージェント育成コース ============ -->
+  <div class="course" id="c5">
+    <button class="course-head" onclick="toggleCourse(this)">
+      <div>
+        <span class="no">COURSE 04</span>
+        <div class="ti">AIエージェント<br>育成コース</div>
+        <div class="sub">「使えるAI人材」ではなく「実装できるAI人材」へ。ライト→スタンダードの2段階構成。</div>
+      </div>
+      <span class="plus">+</span>
+    </button>
+    <div class="course-body">
+      <p class="course-intro">ツール操作を覚えるだけの講座ではありません。業務の課題を見つける力から、実際の企業に向けた提案・実装までを一気通貫で経験する実践型コースです。ライトを修了した方は、続けてスタンダードに進むことができます。</p>
+
+      <!-- CLASS: ライト -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">入門・基礎</span><div class="nm">ライトクラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>ChatGPTやClaudeの操作方法を覚えるだけでは、AIを仕事に活かせるようにはなりません。このクラスではまず「自分や身近な事業の業務をどう分解し、どこに課題があるかを見つけるか」というところから始めます。そのうえで複数のAIツールを連携させた簡単な仕組みづくりに挑戦し、AIを使って何が作れるのかを自分の手で確かめていきます。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>業務の中にある「なんとなく面倒」を、具体的な課題として言葉にできるようになる</li>
+              <li>AIで解決できる課題と、人の判断が必要な課題を見分けられるようになる</li>
+              <li>複数のAIツールを連携させた簡単な仕組みを自分で作れるようになる</li>
+              <li>提案書・見積の基本的な型を理解する</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>業務の言語化・課題発見</div><p>身近な業務を分解し、時間がかかっている部分やミスが起きやすい部分を見つける視点を身につけます。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>ワークフロー設計・プロトタイプ作成</div><p>見つけた課題に対し、複数のAIツールを連携させた簡単な仕組みを実際に作ってみます。</p></div>
+            <p class="step-note">※全20回（週2回ペース・約2ヶ月）。実クライアント案件は含みません。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>AIを仕事に活かしたい社会人・フリーランスの方</li>
+              <li>ツール操作だけでなく、業務改善の考え方から学びたい方</li>
+              <li>プログラミング未経験でも問題ありません</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>社会人・フリーランス／AI活用の入門者</td></tr>
+              <tr><th>期間</th><td>2ヶ月（全20回）</td></tr>
+              <tr><th>回数</th><td>週2回／1回90分</td></tr>
+              <tr><th>料金</th><td>お問い合わせください</td></tr>
+              <tr><th>形式</th><td>オンライン可</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CLASS: スタンダード -->
+      <div class="cls">
+        <button class="cls-head" onclick="toggleClass(this)">
+          <div><span class="tag">実践・案件化</span><div class="nm">スタンダードクラス</div></div>
+          <span class="car">›</span>
+        </button>
+        <div class="cls-body"><div class="cls-in">
+          <div class="blk">
+            <h4>学べること</h4>
+            <p>ライトクラスで身につけた力を、実在する企業に向けて使う段階です。提携企業から紹介される実際の中小企業を相手に、ヒアリングから課題整理、提案書作成、提案、実装、納品までの一連の流れをチームで経験します。模擬課題ではなく、本物の案件に取り組むことで、卒業時には「AIを使って実際の企業の課題を一つ解決した」という実績を持つことができます。</p>
+          </div>
+          <div class="blk">
+            <h4>到達ゴール</h4>
+            <ul>
+              <li>実在する企業へのヒアリングと課題整理ができるようになる</li>
+              <li>クライアントに伝わる提案書を作成できるようになる</li>
+              <li>提案から実装・納品までを最後まで形にできる</li>
+              <li>成果を自分の実績・ポートフォリオとしてまとめられるようになる</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>カリキュラム</h4>
+            <div class="step"><div class="st-h"><span class="stno">STEP1</span>実クライアントへの提案</div><p>提携企業から紹介された実在の中小企業にヒアリングを行い、課題を整理し、提案書を作成・提示します。</p></div>
+            <div class="step"><div class="st-h"><span class="stno">STEP2</span>実装・納品・卒業制作</div><p>合意した範囲を実装し、クライアントへ納品。成果をポートフォリオにまとめ、卒業発表を行います。</p></div>
+            <p class="step-note">※全20回（週1〜3回・可変・約2〜2.5ヶ月）。2〜3名のチーム制で進行します。</p>
+          </div>
+          <div class="blk">
+            <h4>対象者・条件</h4>
+            <ul>
+              <li>ライトクラス修了者（希望者の中から選考の上、進級）</li>
+              <li>実在する企業を相手にした実務経験を積みたい方</li>
+              <li>チームでの案件進行に協力的に取り組める方</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>概要</h4>
+            <table class="ov">
+              <tr><th>対象</th><td>ライトクラス修了者</td></tr>
+              <tr><th>期間</th><td>2〜2.5ヶ月（全20回）</td></tr>
+              <tr><th>回数</th><td>週1〜3回（可変）／1回90分</td></tr>
+              <tr><th>料金</th><td>お問い合わせください</td></tr>
+              <tr><th>形式</th><td>オンライン中心（クライアント対応はチームで調整）</td></tr>
+            </table>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ COURSE 5: 事業家・独立・開業指導 ============ -->
+  <a class="pcard" href="premium-course.html">
+    <span class="ribbon">外部講師による特別プログラム</span>
+    <div class="badge-row"><span class="pbadge">PREMIUM</span><span class="pbadge">選考制</span></div>
+    <span class="no">COURSE 05</span>
+    <div class="ti">事業家・独立<br>開業指導コース</div>
+    <div class="sub">80社以上の設立に関わった外部講師によるプレミアムクラス。受講には面談3回による選考があります。</div>
+    <div class="go"><span class="t">特別クラスの詳細を見る</span><span class="a">→</span></div>
+  </a>
+
+
+  <!-- CTA -->
+  <div class="cta-bottom">
+    <div class="big">JOIN US</div>
+    <div class="jp">まずは無料体験講座から。</div>
+    <a class="pill" href="mailto:info@ancreative.jp">無料体験講座に申し込む →</a>
+  </div>
+
+</div>
+</div>
+
+<a class="totop" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
+
+<script>
+function toggleCourse(btn){
+  const course = btn.parentElement;
+  course.classList.toggle('open');
+}
+function toggleClass(btn){
+  const cls = btn.parentElement;
+  cls.classList.toggle('open');
+}
+
+(function(){
+  const groupSelectors = ['.course', '.pcard', '.cta-bottom .big, .cta-bottom .jp, .cta-bottom .pill'];
+  const targets = new Set();
+  groupSelectors.forEach(sel=>{
+    document.querySelectorAll(sel).forEach(el=>targets.add(el));
+  });
+  let i = 0;
+  targets.forEach(el=>{
+    el.classList.add('rv','rv-stagger');
+    el.style.setProperty('--rvi', (i % 3));
+    i++;
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('rv-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
